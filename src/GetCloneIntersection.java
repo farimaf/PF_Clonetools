@@ -18,12 +18,16 @@ public class GetCloneIntersection {
             PrintWriter printWriter=new PrintWriter(intersetionFileAddress);
             String line="";
             while ((line=bufferedReader.readLine())!=null){
-                type1ClonesSet.add(line);
+                type1ClonesSet.add(line.replace("\n", "").replace("\r", ""));
             }
 
             bufferedReader=new BufferedReader(new FileReader(bigFileAddress));
             while ((line=bufferedReader.readLine())!=null){
-                if (type1ClonesSet.contains(line)){
+                line=line.replace("\n", "").replace("\r", "");
+                String[] lineSplitted=line.split(",");
+                String lineReverse=lineSplitted[4]+","+lineSplitted[5]+","+lineSplitted[6]+","+lineSplitted[7]+","+
+                        lineSplitted[0]+","+lineSplitted[1]+","+lineSplitted[2]+","+lineSplitted[3];
+                if (type1ClonesSet.contains(line) || type1ClonesSet.contains(lineReverse)){
                     printWriter.append(line+System.lineSeparator());
                 }
             }
