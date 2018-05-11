@@ -45,8 +45,8 @@ public class Sample {
             while ((line = bufferedReader.readLine()) != null) {
             if (randomLineNums.contains(lineNum)) {
                 printWriter.append(line + System.lineSeparator());
-                lineNum++;
             }
+            lineNum++;
             }
             System.out.println("Write Complete " );
             printWriter.close();
