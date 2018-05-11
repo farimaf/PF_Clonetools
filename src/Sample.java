@@ -36,18 +36,17 @@ public class Sample {
             int randNumLine = 0;
             while (randomLineNums.size() < numSample ) {
                 randNumLine = random.nextInt(totalNumRows);
-                if (!randomLineNums.contains(randNumLine)) {
-                    randomLineNums.add(randNumLine);
-                }
+                randomLineNums.add(randNumLine);
             }
 
             BufferedReader bufferedReader = new BufferedReader(new FileReader(pathInput));
             String line = "";
             int lineNum = 0;
             while ((line = bufferedReader.readLine()) != null) {
-            if (randomLineNums.contains(lineNum))
-                writeToFile(line);
+            if (randomLineNums.contains(lineNum)) {
+                printWriter.append(line + System.lineSeparator());
                 lineNum++;
+            }
             }
             System.out.println("Write Complete " );
             printWriter.close();
@@ -57,11 +56,4 @@ public class Sample {
     }
 
 
-    private void writeToFile(String line) {
-        try {
-            printWriter.append(line + System.lineSeparator());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }
